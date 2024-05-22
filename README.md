@@ -1,4 +1,4 @@
-# Educational project using php oop and crud
+# Education project about e-commerce backend in php
 
 # Database Schema for `audio`
 
