@@ -6,15 +6,14 @@ use Tests\Test;
 use Debian\Audiofile\Routes\Router;
 use Debian\Audiofile\Controllers\Controller;
 use Debian\Audiofile\Controllers\TracksController;
-
+use Debian\Audiofile\Controllers\UsersController;
 
 $router = new Router;
 
-/* $router->get("/", [Controller::class, 'index']);
-$router->get("/tracks", [TracksController::class, 'index']);
-$router->get("/tracks/create", [TracksController::class, 'create']);
+$router->get("/", [TracksController::class, 'index']);
+
 
 $router->run();
- */
 
-Test::main();
+
+//Test::main();
