@@ -31,14 +31,16 @@ class Router
             call_user_func($fn, $this);
         } else {
             http_response_code(404);
-            header("Location: /");
+            header("Location: /404");
         }
     }
 
     public function view(string $view, mixed $data = null)
     {
-        foreach ($data as $key => $value) {
-            $$key = $value;
+        if ($data) {
+            foreach ($data as $key => $value) {
+                $$key = $value;
+            }
         }
 
         ob_start();
