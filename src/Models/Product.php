@@ -14,13 +14,15 @@ class Product extends Model
     protected string $description;
     protected float $price;
     protected string $stock;
-
     protected string $dateadded;
     protected int $categoryid;
-
     protected static $table = "products";
+
+    public static array $fields;
     public function __construct($args)
     {
+        parent::__construct($this->validation);
+
         $this->id = $args['id'];
         $this->productname = $args['productname'];
         $this->price = $args['price'];
@@ -35,5 +37,10 @@ class Product extends Model
             }
             static::$fields[$key] = $value;
         }
+    }
+
+    public function validateData()
+    {
+        $this->validation->validate(static::$fields);
     }
 }

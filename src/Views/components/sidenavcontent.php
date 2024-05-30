@@ -3,7 +3,7 @@
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading">Core</div>
-                    <a class="nav-link" href="home">
+                    <a class="nav-link" href="/">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Dashboard
                     </a>
@@ -65,9 +65,13 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                         Charts
                     </a>
-                    <a class="nav-link" href="user">
-                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                    <a class="nav-link" href="/users">
+                        <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                         Users
+                    </a>
+                    <a class="nav-link" href="/products">
+                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                        Products
                     </a>
                 </div>
             </div>

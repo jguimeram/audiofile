@@ -14,9 +14,13 @@ use Debian\Audiofile\Controllers\ProductsController;
 $router = new Router;
 
 $router->get("/", [HomeController::class, 'index']);
-$router->get("/products", [ProductsController::class, 'index']);
+
 $router->get("/users", [UsersController::class, 'index']);
+
+$router->get("/products", [ProductsController::class, 'index']);
+$router->get("/products/create", [ProductsController::class, 'create']);
 $router->post("/products/create", [ProductsController::class, 'create']);
+
 $router->get("/404", [ErrorsController::class, 'error']);
 
 

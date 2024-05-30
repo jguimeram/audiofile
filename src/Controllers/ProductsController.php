@@ -12,15 +12,25 @@ class ProductsController extends Controller
     public static function index(Router $router)
     {
         $data = Product::all();
-        $router->view("Products/index", $data);
+        $router->view("products/products", $data);
     }
 
     public static function create(Router $router)
     {
+
+        /*
+        TODO:
+        Define reference by select id + 1;
+        Create validation process in model
+        */
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $args = $_POST;
             $product = new Product($args);
+            $product->validation();
         }
-        $router->view("Products/create", $args);
+
+        $args = null;
+        $router->view("products/create", $args);
     }
 }

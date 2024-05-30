@@ -3,6 +3,7 @@
 namespace Debian\Audiofile\Models;
 
 use PDO;
+use Debian\Audiofile\Services\Validation;
 use Debian\MvcTemplate\Database\Connection;
 
 class Model
@@ -12,6 +13,12 @@ class Model
     public static array $fields;
     protected ?int $id;
 
+    protected $validation;
+
+    public function __construct(Validation $validation)
+    {
+        $this->validation = $validation;
+    }
     public function connectToDatabase(PDO $pdo)
     {
         static::$pdo = $pdo;
@@ -68,6 +75,17 @@ class Model
         $stmt->execute([$id]);
         $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $res;
+    }
+
+
+    public static function getLastId($id): int
+    {
+
+        /**
+         * TODO:
+         * Get last id from the records;
+         */
+        return ($id) ? $id :  null;
     }
 
     public function getArrayKeys(): ?string

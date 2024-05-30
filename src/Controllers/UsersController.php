@@ -8,6 +8,6 @@ class UsersController extends Controller
 {
     public static function index(Router $router)
     {
-        $router->view('users/index', null);
+        $router->view('users/users', null);
     }
 }

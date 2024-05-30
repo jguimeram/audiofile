@@ -30,7 +30,6 @@ class Router
         if ($fn) {
             call_user_func($fn, $this);
         } else {
-            http_response_code(404);
             header("Location: /404");
         }
     }
