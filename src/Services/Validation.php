@@ -6,6 +6,6 @@ class Validation
 {
     public function validate($args)
     {
-        var_dump($args);
+        echo "from validate";
     }
 }

@@ -27,7 +27,7 @@ class ProductsController extends Controller
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $args = $_POST;
             $product = new Product($args);
-            $product->validation();
+            $product->validateData();
         }
 
         $args = null;

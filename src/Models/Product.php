@@ -21,8 +21,8 @@ class Product extends Model
     public static array $fields;
     public function __construct($args)
     {
-        parent::__construct($this->validation);
 
+        var_dump($args);
         $this->id = $args['id'];
         $this->productname = $args['productname'];
         $this->price = $args['price'];
@@ -30,13 +30,7 @@ class Product extends Model
         $this->dateadded = $args['dateadded'];
         $this->categoryid = $args['category'];
 
-
-        foreach ($args as $key => $value) {
-            if ($key === 'id') {
-                continue;
-            }
-            static::$fields[$key] = $value;
-        }
+        static::$fields = $args;
     }
 
     public function validateData()
