@@ -7,6 +7,5 @@ use Debian\Audiofile\Services\Validation;
 
 
 $conn = Connection::database();
-$val = new Validation();
-$model = new Model(validation: $val);
+$model = new Model();
 $model->connectToDatabase($conn);

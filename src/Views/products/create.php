@@ -12,11 +12,12 @@
             </div> -->
             <div class=" col-md-12">
                 <label for="product" class="form-label">Name of the product</label>
-                <input type="text" class="form-control" id="product" name="product">
+                <input type="text" class="form-control" id="product" name="productname">
             </div>
             <div class="col-12">
                 <label for="description" class="form-label">Description</label>
-                <textarea class="form-control" id="description" placeholder="description..." rows="10"></textarea>
+                <textarea class="form-control" id="description" placeholder="description..." rows="10"
+                    name="description"></textarea>
             </div>
             <div class="col-md-2">
                 <label for="price" class="form-label">Price</label>

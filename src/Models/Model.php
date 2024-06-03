@@ -12,13 +12,9 @@ class Model
     protected static $table;
     public static array $fields;
     protected ?int $id;
+    protected object $validation;
 
-    protected $validation;
 
-    public function __construct(Validation $validation)
-    {
-        $this->validation = $validation;
-    }
     public function connectToDatabase(PDO $pdo)
     {
         static::$pdo = $pdo;
@@ -96,9 +92,5 @@ class Model
     public function getArrayValues(): ?string
     {
         return implode(',', array_values(static::$fields));
-    }
-    public function exec(): int
-    {
-        return $this->id = 3;
     }
 }

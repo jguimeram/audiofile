@@ -9,7 +9,7 @@ use Debian\Audiofile\Controllers\HomeController;
 use Debian\Audiofile\Controllers\UsersController;
 use Debian\Audiofile\Controllers\ErrorsController;
 use Debian\Audiofile\Controllers\ProductsController;
-
+use function Debian\Audiofile\Helpers\dd;
 
 $router = new Router;
 
