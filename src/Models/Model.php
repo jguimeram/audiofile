@@ -3,6 +3,7 @@
 namespace Debian\Audiofile\Models;
 
 use PDO;
+use Debian\Audiofile\Services\Validation;
 use Debian\MvcTemplate\Database\Connection;
 
 class Model
@@ -11,6 +12,8 @@ class Model
     protected static $table;
     public static array $fields;
     protected ?int $id;
+    protected object $validation;
+
 
     public function connectToDatabase(PDO $pdo)
     {
@@ -70,6 +73,17 @@ class Model
         return $res;
     }
 
+
+    public static function getLastId($id): int
+    {
+
+        /**
+         * TODO:
+         * Get last id from the records;
+         */
+        return ($id) ? $id :  null;
+    }
+
     public function getArrayKeys(): ?string
     {
         return implode(',', array_keys(static::$fields));
@@ -78,9 +92,5 @@ class Model
     public function getArrayValues(): ?string
     {
         return implode(',', array_values(static::$fields));
-    }
-    public function exec(): int
-    {
-        return $this->id = 3;
     }
 }

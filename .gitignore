@@ -5,3 +5,4 @@ package-lock.json
 src/Public/bootstrap
 run.sh
 scripts
+template
