@@ -54,6 +54,9 @@ class ProductsController extends Controller
              * get the id of the product to delete
              * call delete method
              */
+
+            $id = 0;
+            Product::find($id);
         }
 
         $data = Product::all();
