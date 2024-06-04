@@ -26,6 +26,7 @@ $router->get("/products/create", [ProductsController::class, 'create']);
 $router->post("/products/create", [ProductsController::class, 'create']);
 $router->get("/products/delete", [ProductsController::class, 'delete']);
 $router->post("/products/delete", [ProductsController::class, 'delete']);
+$router->get("/products/update/:id", [ProductsController::class, 'update']);
 
 $router->get("/404", [ErrorsController::class, 'error']);
 

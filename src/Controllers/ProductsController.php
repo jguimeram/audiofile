@@ -62,4 +62,9 @@ class ProductsController extends Controller
         $data = Product::all();
         $router->view("products/products", $data);
     }
+
+    public static function update(Router $router)
+    {
+        echo $router->id;
+    }
 }

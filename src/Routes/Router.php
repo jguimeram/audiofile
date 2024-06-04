@@ -6,6 +6,9 @@ class Router
 {
     protected array $getUrl = [];
     protected array $postUrl = [];
+    protected string $url;
+
+    public int $id;
     public function get($url, $fn)
     {
         $this->getUrl[$url] = $fn;
@@ -19,12 +22,17 @@ class Router
     public function run()
     {
         $method = $_SERVER['REQUEST_METHOD'] ?? null;
-        $url = $_SERVER['REQUEST_URI'] ?? "/";
+        $this->url = $_SERVER['REQUEST_URI'] ?? "/";
+
+        if (preg_match('/\/(\d+)(\/|$)/', $this->url, $matches)) {
+            $this->url = preg_replace('/\/(\d+)(\/|$)/', '/:id', $this->url); //replace
+            $this->id = $matches[1] ?? null; //get the id value from url
+        }
 
         if ($method === 'GET') {
-            $fn = $this->getUrl[$url] ?? null;
+            $fn = $this->getUrl[$this->url] ?? null;
         } else {
-            $fn = $this->postUrl[$url] ?? null;
+            $fn = $this->postUrl[$this->url] ?? null;
         }
 
         if ($fn) {

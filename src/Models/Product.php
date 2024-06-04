@@ -9,7 +9,7 @@ use Debian\Audiofile\Models\Model;
 
 class Product extends Model
 {
-    protected ?int $id;
+    protected int $id;
     protected string $productname;
     protected string $description;
     protected string $price;
@@ -19,13 +19,15 @@ class Product extends Model
     public static array $fields;
     public function __construct($args)
     {
+        //TODO: fix casting
         $args['categoryid'] = (int)$args['categoryid'];
-
-        $this->productname = $args['productname'];
+        $args['id'] = (int)$args['id'];
+        $this->$this->productname = $args['productname'];
         $this->description = $args['description'];
         $this->price = $args['price'];
         $this->stock = $args['stock'];
         $this->categoryid = $args['categoryid'];
+        $this->id = $args['id'];
 
         static::$fields = $args;
     }

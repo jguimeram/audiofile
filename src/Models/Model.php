@@ -11,7 +11,7 @@ class Model
     protected static $pdo;
     protected static $table;
     public static array $fields;
-    protected ?int $id;
+    protected int $id;
     protected object $validation;
 
 
