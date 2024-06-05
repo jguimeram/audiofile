@@ -22,7 +22,7 @@ class Product extends Model
         //TODO: fix casting
         $args['categoryid'] = (int)$args['categoryid'];
         $args['id'] = (int)$args['id'];
-        $this->$this->productname = $args['productname'];
+        $this->productname = $args['productname'];
         $this->description = $args['description'];
         $this->price = $args['price'];
         $this->stock = $args['stock'];

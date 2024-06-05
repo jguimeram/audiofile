@@ -5,6 +5,7 @@ namespace Debian\Audiofile\Models;
 use PDO;
 use Debian\Audiofile\Services\Validation;
 use Debian\MvcTemplate\Database\Connection;
+use function Debian\Audiofile\Helpers\dd;
 
 class Model
 {
@@ -36,20 +37,14 @@ class Model
     }
     public function update(): bool
     {
-        $keys = array_keys(static::$fields);
-
-        $placeholders = "";
-
-        foreach ($keys as $values) {
-            $placeholders .= "$values=? ";
-        }
-
-        $query = "UPDATE " . static::$table . "SET";
-        $query = "UPDATE users SET $placeholders";
-        $query .= "WHERE id=?";
-
-        return static::$pdo->prepare($query)->execute(static::$fields);
+        $params = array_values(static::$fields);
+        $keys = $this->getArrayKeys();
+        $placeholders = str_replace(",", "=?, ", $keys) . "=?";
+        $query = "UPDATE " . static::$table . " SET " . $placeholders;
+        $query .= " WHERE id={$this->id}";
+        return static::$pdo->prepare($query)->execute($params);
     }
+
     public function delete(): bool
     {
         $query = "DELETE FROM " . static::$table . " WHERE id=?";
@@ -64,7 +59,7 @@ class Model
         $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $res;
     }
-    public static function find(int $id)
+    public static function find(int $id): array
     {
         $query = "SELECT * FROM " . static::$table . " WHERE id=?";
         $stmt = static::$pdo->prepare($query);
@@ -74,14 +69,9 @@ class Model
     }
 
 
-    public static function getLastId($id): int
+    public static function sync($args)
     {
-
-        /**
-         * TODO:
-         * Get last id from the records;
-         */
-        return ($id) ? $id :  null;
+        static::$fields = $args;
     }
 
     public function getArrayKeys(): ?string

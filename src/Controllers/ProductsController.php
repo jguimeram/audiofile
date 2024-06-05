@@ -2,11 +2,12 @@
 
 namespace Debian\Audiofile\Controllers;
 
+use Exception;
 use Debian\Audiofile\Routes\Router;
 use Debian\Audiofile\Models\Product;
-use Debian\Audiofile\Controllers\Controller;
-use Debian\Audiofile\Services\FlashMessage;
 use function Debian\Audiofile\Helpers\dd;
+use Debian\Audiofile\Services\FlashMessage;
+use Debian\Audiofile\Controllers\Controller;
 
 
 class ProductsController extends Controller
@@ -35,6 +36,7 @@ class ProductsController extends Controller
                     'message' => $message
                 ];
             } else {
+                throw new Exception("Product creation failed");
             }
         }
 
@@ -50,12 +52,9 @@ class ProductsController extends Controller
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            /**
-             * get the id of the product to delete
-             * call delete method
-             */
+            //TODO: delete
 
-            $id = 0;
+            $id = $_POST['id'];
             Product::find($id);
         }
 
@@ -65,6 +64,36 @@ class ProductsController extends Controller
 
     public static function update(Router $router)
     {
-        echo $router->id;
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $args = $_POST;
+
+            $id = (int)$args['id'];
+
+            $productId = Product::find($id);
+
+            if ($productId[0]['id'] !== $id) {
+                throw new Exception('The ID of the product does not match with POST id parameter', 420);
+            }
+            $product = new Product($args);
+            $res = $product->update();
+            if ($res) {
+                header('Location: /products');
+            }
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+
+            /**
+             * 
+             * @param Product::find @return array
+             */
+            $args = Product::find($router->id);
+            $data = [
+                'args' => $args,
+            ];
+            $router->view("products/edit", $data);
+        }
     }
 }
