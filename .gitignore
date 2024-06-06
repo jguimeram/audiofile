@@ -2,7 +2,8 @@ vendor
 node_modules
 package-lock.json
 *.lock
-src/Public/
+src/Public/bootstrap
+src/Public/css
 run.sh
 scripts
 template
