@@ -1,5 +1,4 @@
 node_modules
-vendor
 package-lock.json
 *.lock
 src/Public/bootstrap
