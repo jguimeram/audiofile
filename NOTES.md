@@ -18,4 +18,6 @@ Database
 
 [ ] En relación al punto anterior, mejorar la obtención del ID a buscar. Actualmente se obtiene desde el enrutador ya que se pasa por url.
 
+[ ] Arreglar casteo de string a int de los valores del formulario que se obtienen como string pero en la base de datos son de tipo INT
+
 ### Cosas a mejorar en la versión 2.1
