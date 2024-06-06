@@ -1,9 +1,10 @@
-vendor
 node_modules
 package-lock.json
 *.lock
 src/Public/bootstrap
 src/Public/css
+src/Public/assets
 run.sh
 scripts
 template
+Tests
