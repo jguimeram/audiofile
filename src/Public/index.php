@@ -9,7 +9,7 @@ use Debian\Audiofile\Controllers\HomeController;
 use Debian\Audiofile\Controllers\UsersController;
 use Debian\Audiofile\Controllers\ErrorsController;
 use Debian\Audiofile\Controllers\ProductsController;
-use function Debian\Audiofile\Helpers\dd;
+
 
 
 
@@ -28,8 +28,8 @@ $router->post("/products/create", [ProductsController::class, 'create']);
 $router->get("/products/update/:id", [ProductsController::class, 'update']);
 $router->post("/products/update", [ProductsController::class, 'update']);
 
-$router->get("/products/delete", [ProductsController::class, 'delete']);
-$router->post("/products/delete", [ProductsController::class, 'delete']);
+$router->get("/products/delete/:id", [ProductsController::class, 'delete']);
+//$router->post("/products/delete/:id", [ProductsController::class, 'delete']);
 
 
 $router->get("/404", [ErrorsController::class, 'error']);

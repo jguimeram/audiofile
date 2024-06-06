@@ -5,7 +5,6 @@ namespace Debian\Audiofile\Controllers;
 use Exception;
 use Debian\Audiofile\Routes\Router;
 use Debian\Audiofile\Models\Product;
-use function Debian\Audiofile\Helpers\dd;
 use Debian\Audiofile\Services\FlashMessage;
 use Debian\Audiofile\Controllers\Controller;
 
@@ -50,16 +49,16 @@ class ProductsController extends Controller
     public static function delete(Router $router)
     {
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        //TODO: form where link to product url. 
 
-            //TODO: delete
-
-            $id = $_POST['id'];
-            Product::find($id);
+        $args = Product::find($router->id);
+        if ($args[0]) {
+            $product = new Product($args[0]);
+            $res = $product->delete();
+            if ($res) {
+                header('Location: /products');
+            }
         }
-
-        $data = Product::all();
-        $router->view("products/products", $data);
     }
 
     public static function update(Router $router)

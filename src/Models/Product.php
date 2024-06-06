@@ -5,7 +5,7 @@ namespace Debian\Audiofile\Models;
 
 use PDO;
 use Debian\Audiofile\Models\Model;
-
+use function Debian\Audiofile\Helpers\dd;
 
 class Product extends Model
 {

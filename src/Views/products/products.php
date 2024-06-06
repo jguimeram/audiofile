@@ -46,6 +46,7 @@
                             <td><?= $product['categoryid']; ?></td>
                             <td>
                                 <a href="/products/update/<?= $product['id'] ?>" class=" btn btn-success">Edit</a>
+                                <!-- this must be a form: -->
                                 <a href="/products/delete/<?= $product['id'] ?>" class="btn btn-danger">Remove</a>
                             </td>
                         </tr>
