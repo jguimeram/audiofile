@@ -20,4 +20,6 @@ Database
 
 [ ] Arreglar casteo de string a int de los valores del formulario que se obtienen como string pero en la base de datos son de tipo INT
 
+[ ] Validación datos formulario
+
 ### Cosas a mejorar en la versión 2.1
